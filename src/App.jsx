@@ -9,7 +9,7 @@ import SignupPage from './pages/Signup';
 import { useEffect, useState } from 'react';
 import AIDocBuilder from './pages/AIDocBuilder';
 import OnboardingQuestions from './components/OnboardingQuestions';
-import LandingPage from './pages/LandingPage';
+// import LandingPage from './pages/LandingPage';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -55,7 +55,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="*" element={<Navigate to="/login" />} />
         <Route path='/onboarding' element={<OnboardingQuestions />} />
-        <Route path='home' element={<LandingPage />} />
+        {/* <Route path='home' element={<LandingPage />} /> */}
       </Routes>
     </>
   );
