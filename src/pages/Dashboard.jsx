@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -12,10 +12,35 @@ import DashboardLicensesAndCertifications from '../components/DashboardLicensesA
 import DashboardAlertsUpdates from '../components/DashboardAlertsUpdates';
 import DashboardStepByStepGuide from '../components/DashboardStepByStepGuide';
 import DashboardBestPractices from '../components/DashboardBestPractices';
+import axios from 'axios';
 
 const Dashboard = () => {
+  const [userData, setUserData] = useState(null);
   const [firstTime, setFirstTime] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const token = localStorage.getItem('authToken');
+
+      if (token) {
+        try {
+          const response = await axios.get('http://localhost:8000/auth/get-user-data', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          setUserData(response.data);
+          console.log(userData)
+        } catch (err) {
+          console.error('Error fetching user data:', err);
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleStartClick = () => {
     setFirstTime(false);
@@ -31,6 +56,7 @@ const Dashboard = () => {
       <main className="main-content">
         <Header />
         {firstTime ? <DashboardNewUserWelcome /> : <DashboardOldUserWelcome />}
+        {userData && <div>Welcome, {userData.username}!</div>}
 
         <div className="tabs">
           <span
