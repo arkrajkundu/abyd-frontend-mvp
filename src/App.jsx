@@ -11,6 +11,7 @@ import AIDocBuilder from './pages/AIDocBuilder';
 import OnboardingQuestions from './components/OnboardingQuestions';
 import LandingPage from './pages/LandingPage';
 import Chatbot from './components/Chatbot';
+import DocBuilder from './components/DocBuilder';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,7 +53,7 @@ function App() {
         {/* <Route path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} /> */}
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
         {/* <Route path="/ai-doc-builder" element={isAuthenticated ? <AIDocBuilder /> : <Navigate to="/login" />} /> */}
-        <Route path="/ai-doc-builder" element={<AIDocBuilder />} />
+        <Route path="/ai-doc-builder" element={<DocBuilder />} />
         <Route path="/report" element={<ReportPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="*" element={<Navigate to="/login" />} />
