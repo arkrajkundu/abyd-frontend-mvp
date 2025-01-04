@@ -6,10 +6,10 @@ import DashboardFirstTime from '../components/DashboardFirstTime';
 import DashboardOverview from '../components/DashboardOverview';
 import DashboardNewUserWelcome from '../components/DashboardNewUserWelcome';
 import DashboardOldUserWelcome from '../components/DashboardOldUserWelcome';
-import DashboardPendingQueries from '../components/DashboardPendingQueries';
-import DashboardPendingReviews from '../components/DashboardPendingReviews';
+import DashboardComplianceChecklist from '../components/DashboardComplianceChecklist';
+import DashboardPenaltyKeywords from '../components/DashboardPenaltyKeywords';
 import DashboardLicensesAndCertifications from '../components/DashboardLicensesAndCertifications';
-import DashboardAlertsUpdates from '../components/DashboardAlertsUpdates';
+import DashboardLegalDocuments from '../components/DashboardLegalDocuments';
 import DashboardStepByStepGuide from '../components/DashboardStepByStepGuide';
 import DashboardBestPractices from '../components/DashboardBestPractices';
 import axios from 'axios';
@@ -56,7 +56,7 @@ const Dashboard = () => {
       <main className="main-content">
         <Header />
         {firstTime ? <DashboardNewUserWelcome /> : <DashboardOldUserWelcome />}
-        {userData && <div>Welcome, {userData.username}!</div>}
+        {/* {userData && <div>Welcome, {userData.username}!</div>} */}
 
         <div className="tabs">
           <span
@@ -66,16 +66,22 @@ const Dashboard = () => {
             OVERVIEW
           </span>
           <span
-            className={`tab ${activeTab === 'pendingQueries' ? 'active' : ''}`}
-            onClick={() => handleTabClick('pendingQueries')}
+            className={`tab ${activeTab === 'complianceChecklist' ? 'active' : ''}`}
+            onClick={() => handleTabClick('complianceChecklist')}
           >
-            PENDING QUERIES
+            COMPLIANCE CHECKLIST
           </span>
           <span
-            className={`tab ${activeTab === 'pendingReviews' ? 'active' : ''}`}
-            onClick={() => handleTabClick('pendingReviews')}
+            className={`tab ${activeTab === 'penaltyKeywords' ? 'active' : ''}`}
+            onClick={() => handleTabClick('penaltyKeywords')}
           >
-            PENDING REVIEWS
+            PENALTY KEYWORDS
+          </span>
+          <span
+            className={`tab ${activeTab === 'stepByStepGuide' ? 'active' : ''}`}
+            onClick={() => handleTabClick('stepByStepGuide')}
+          >
+            STEP-BY-STEP GUIDE
           </span>
           <span
             className={`tab ${activeTab === 'licensesCertifications' ? 'active' : ''}`}
@@ -84,16 +90,10 @@ const Dashboard = () => {
             LICENSE & CERTIFICATIONS
           </span>
           <span
-            className={`tab ${activeTab === 'alertsUpdates' ? 'active' : ''}`}
-            onClick={() => handleTabClick('alertsUpdates')}
+            className={`tab ${activeTab === 'legalDocuments' ? 'active' : ''}`}
+            onClick={() => handleTabClick('legalDocuments')}
           >
-            ALERTS & UPDATES
-          </span>
-          <span
-            className={`tab ${activeTab === 'stepByStepGuide' ? 'active' : ''}`}
-            onClick={() => handleTabClick('stepByStepGuide')}
-          >
-            STEP-BY-STEP GUIDE
+            LEGAL DOCUMENTS
           </span>
           <span
             className={`tab ${activeTab === 'bestPractices' ? 'active' : ''}`}
@@ -105,11 +105,21 @@ const Dashboard = () => {
 
         {firstTime && <DashboardFirstTime onStart={handleStartClick} />}
         {!firstTime && activeTab === 'overview' && <DashboardOverview />}
-        {!firstTime && activeTab === 'pendingQueries' && <DashboardPendingQueries />}
-        {!firstTime && activeTab === 'pendingReviews' && <DashboardPendingReviews />}
-        {!firstTime && activeTab === 'licensesCertifications' && <DashboardLicensesAndCertifications />}
-        {!firstTime && activeTab === 'alertsUpdates' && <DashboardAlertsUpdates />}
-        {!firstTime && activeTab === 'stepByStepGuide' && <DashboardStepByStepGuide />}
+        {!firstTime && activeTab === 'complianceChecklist' && (
+          <DashboardComplianceChecklist complianceChecklist={userData?.userStats?.complianceChecklist} />
+        )}
+        {!firstTime && activeTab === 'penaltyKeywords' && (
+          <DashboardPenaltyKeywords penaltyKeywords={userData?.userStats?.penaltyKeywords} />
+        )}
+        {!firstTime && activeTab === 'stepByStepGuide' && (
+          <DashboardStepByStepGuide stepByStepGuide={userData?.userStats?.stepByStepGuide} />
+        )}
+        {!firstTime && activeTab === 'licensesCertifications' && (
+          <DashboardLicensesAndCertifications certifications={userData?.userStats?.certifications} />
+        )}
+        {!firstTime && activeTab === 'legalDocuments' && (
+          <DashboardLegalDocuments legalDocuments={userData?.userStats?.legalDocuments} />
+        )}
         {!firstTime && activeTab === 'bestPractices' && <DashboardBestPractices />}
       </main>
     </div>
