@@ -19,8 +19,9 @@ const Chatbox = () => {
   const params = new URLSearchParams(window.location.search);
   const emailParam = params.get("email");
   const usernameParam = params.get("username");
-  console.log(emailParam);
-  console.log(usernameParam);
+  // console.log(emailParam);
+  // console.log(usernameParam);
+  
   const sendEmail = async () => {
     try {
       if (!form.current) {
