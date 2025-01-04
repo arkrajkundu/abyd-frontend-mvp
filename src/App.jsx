@@ -48,8 +48,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path='/chatbot' element={<Chatbot />} /> */}
-        <Route path='/chatbot' element={isAuthenticated ? <Chatbot /> : <Navigate to="/login" />} />
+        <Route path='/chatbot' element={<Chatbot />} />
+        {/* <Route path='/chatbot' element={isAuthenticated ? <Chatbot /> : <Navigate to="/login" />} /> */}
         <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
         {/* <Route path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} /> */}
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />

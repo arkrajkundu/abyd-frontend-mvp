@@ -1,11 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./style.css";
 import emailjs from "@emailjs/browser";
 import handIcon from '../assets/wave_9437514.png';
-import man from '../assets/man-user-circle-icon.png';
 import girl from '../assets/girl_4140073.png';
 import assistant from '../assets/assistant_7498826.png';
+import axios from 'axios';
+
 const Chatbox = () => {
+  const [userData, setUserData] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isPerson1Turn, setIsPerson1Turn] = useState(true);
@@ -16,11 +18,28 @@ const Chatbox = () => {
   const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-  const params = new URLSearchParams(window.location.search);
-  const emailParam = params.get("email");
-  const usernameParam = params.get("username");
-  // console.log(emailParam);
-  // console.log(usernameParam);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        try {
+          const response = await axios.get('http://localhost:8000/auth/get-user-data', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setUserData(response.data);
+        } catch (err) {
+          console.error('Error fetching user data:', err);
+          setUserData(null); // Ensure stale data isn't used
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  console.log(userData.email);
   const sendEmail = async () => {
     try {
       if (!form.current) {
@@ -74,14 +93,20 @@ const Chatbox = () => {
   return (
     <div className="chat-container2">
       <div className="dash2">
-        <div className="dashText2">Dashboard &nbsp; &gt; &nbsp; Do it Yourself &nbsp; &gt; &nbsp; Chatbot</div><img src={girl} alt="man" className="manImage2" />
+        <div className="dashText2">Dashboard &nbsp; &gt; &nbsp; Do it Yourself &nbsp; &gt; &nbsp; Chatbot</div>
+        <img src={girl} alt="man" className="manImage2" />
       </div>
       <div className="chat-abyd2">
-        <div className="chat-abyd-head2">Chat with ABYD Team <img src={handIcon} alt="hand" className='home__hand2'/></div>
+        <div className="chat-abyd-head2">
+          Chat with ABYD Team <img src={handIcon} alt="hand" className="home__hand2" />
+        </div>
         <div className="chat-abyd-def2">
           We're here to help! Ask your questions, and we'll assist you
         </div>
-        <div className="chat-abyd-with2"><img src={assistant} alt="man" className="manImage2" />You are chatting with (Name)</div>
+        <div className="chat-abyd-with2">
+          <img src={assistant} alt="assistant" className="manImage2" />
+          You are chatting with (Name)
+        </div>
       </div>
       <div className="chat-box2">
         {messages.map((msg, index) => (
@@ -90,14 +115,20 @@ const Chatbox = () => {
               <div className="timestamp2">{msg.time}</div>
               <div className="messageText2">{msg.text}</div>
             </div>
-            <div className="userName2"><img src={girl} alt="man" className="manImage2" /></div>
+            <div className="userName2">
+              <img src={girl} alt="man" className="manImage2" />
+            </div>
           </div>
         ))}
       </div>
       <form ref={form} className="input-area2">
         {/* Hidden fields for hardcoded email and name */}
-        <input type="hidden" name="email" value="hardcodedemail@example.com" />
-        <input type="hidden" name="name" value="Hardcoded Name" />
+        {userData && (
+          <>
+            <input type="hidden" name="email" value={userData?.email || ''} />
+            <input type="hidden" name="name" value={userData?.username || ''} />
+          </>
+        )}
         <input type="hidden" name="sender" />
         {/* Visible input for the message */}
         <input
