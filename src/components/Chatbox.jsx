@@ -39,7 +39,6 @@ const Chatbox = () => {
     fetchUserData();
   }, []);
 
-  console.log(userData.email);
   const sendEmail = async () => {
     try {
       if (!form.current) {
