@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './DocBuilder.css';
-import { fetchState, saveState } from '../Api/api';
+import { fetchState, saveState } from '../Api/api.js';
 import html2pdf from 'html2pdf.js';
-import Question from './Question';
-import PdfViewer from './PdfViewer';
+import PdfViewer from './PdfViewer.jsx';
+import Question from './Question.jsx';
 function getDate() {
   const today = new Date();
   const month = today.getMonth() + 1;

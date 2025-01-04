@@ -11,6 +11,7 @@ import AIDocBuilder from './pages/AIDocBuilder';
 import OnboardingQuestions from './components/OnboardingQuestions';
 import LandingPage from './pages/LandingPage';
 import Chatbot from './components/Chatbot';
+import DocBuilder from './components/DocBuilder';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,18 +48,18 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* <Route path='/chatbot' element={<Chatbot />} /> */}
+        <Route path='/chatbot' element={isAuthenticated ? <Chatbot /> : <Navigate to="/login" />} />
         <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
         {/* <Route path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} /> */}
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
         {/* <Route path="/ai-doc-builder" element={isAuthenticated ? <AIDocBuilder /> : <Navigate to="/login" />} /> */}
-        <Route path="/ai-doc-builder" element={<AIDocBuilder />} />
+        <Route path="/ai-doc-builder" element={<DocBuilder />} />
         <Route path="/report" element={<ReportPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="*" element={<Navigate to="/login" />} />
         <Route path='/onboarding' element={<OnboardingQuestions />} />
         <Route path='home' element={<LandingPage />} />
-        <Route path='/chatbot' element={<Chatbot />} />
-        {/* <Route path='/chatbot' element={isAuthenticated ? <Chatbot /> : <Navigate to="/login" />} /> */}
       </Routes>
     </>
   );

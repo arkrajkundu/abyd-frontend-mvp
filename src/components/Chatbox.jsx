@@ -21,7 +21,6 @@ const Chatbox = () => {
   const usernameParam = params.get("username");
   // console.log(emailParam);
   // console.log(usernameParam);
-  
   const sendEmail = async () => {
     try {
       if (!form.current) {

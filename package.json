@@ -12,7 +12,11 @@
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
     "@emailjs/browser": "^4.4.1",
-    "axios": "^1.7.9",
+    "axios": "^1.7.7",
+    "html2canvas": "^1.4.1",
+    "html2pdf": "^0.0.11",
+    "html2pdf.js": "^0.10.2",
+    "jspdf": "^2.5.2",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000/api'; // Replace with your backend URL
+const API_BASE_URL = 'http://localhost:8000/api';
 
 export const fetchState = async () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token'); 
     const response = await axios.get(API_BASE_URL, {
         headers: { Authorization: `Bearer ${token}` }
     });

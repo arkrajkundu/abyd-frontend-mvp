@@ -1,6 +1,6 @@
 import React from 'react';
-// import html2canvas from 'html2canvas';
-// import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 const PdfViewer = ({ displayedContent }) => {
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
