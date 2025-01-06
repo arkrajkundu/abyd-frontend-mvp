@@ -1,29 +1,51 @@
 .questionnaire-container {
   padding: 20px;
   width: 100%;
+  display: flex;
 }
 
-h2 {
+.questionnaire-container .question-section {
+  flex: 2;
+  padding-right: 20px;
+}
+
+.questionnaire-container .report-section {
+  flex: 1;
+  padding-left: 20px;
+  border-left: 2px solid #ddd;
+}
+
+.questionnaire-container .user-stats {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.questionnaire-container button.save-button {
+  margin-top: 20px;
+}
+
+.questionnaire-container h2 {
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-.question {
+.questionnaire-container .question {
   margin-bottom: 20px;
 }
 
-label {
+.questionnaire-container label {
   display: block;
   margin-bottom: 10px;
   font-size: 1rem;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+.questionnaire-container input[type="radio"],
+.questionnaire-container input[type="checkbox"] {
   margin-right: 10px;
 }
 
-.save-button {
+.questionnaire-container .save-button {
   padding: 10px 20px;
   background-color: #ff7f50;
   border: none;
@@ -32,13 +54,13 @@ input[type="checkbox"] {
   border-radius: 5px;
 }
 
-.tip-icon {
+.questionnaire-container .tip-icon {
   cursor: pointer;
   margin-left: 8px;
   color: #007bff;
 }
 
-.tip-popup {
+.questionnaire-container .tip-popup {
   position: absolute;
   background: white;
   border: 1px solid #ccc;

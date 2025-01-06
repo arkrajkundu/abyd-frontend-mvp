@@ -9,6 +9,7 @@ import SignupPage from './pages/Signup';
 import { useEffect, useState } from 'react';
 import AIDocBuilder from './pages/AIDocBuilder';
 import OnboardingQuestions from './components/OnboardingQuestions';
+import Questionnaire from './components/Questionnaire';
 // import LandingPage from './pages/LandingPage';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="*" element={<Navigate to="/login" />} />
         <Route path='/onboarding' element={<OnboardingQuestions />} />
+        <Route path='/questionnaire' element={<Questionnaire />} />
         {/* <Route path='home' element={<LandingPage />} /> */}
       </Routes>
     </>
