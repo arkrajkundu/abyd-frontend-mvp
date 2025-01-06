@@ -46,7 +46,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<LandingPage />} />
         <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
         {/* <Route path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} /> */}
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
@@ -57,7 +57,7 @@ function App() {
         <Route path="*" element={<Navigate to="/login" />} />
         <Route path='/onboarding' element={<OnboardingQuestions />} />
         <Route path='/questionnaire' element={<Questionnaire />} />
-        <Route path='/' element={<LandingPage />} />
+
       </Routes>
     </>
   );
