@@ -77,17 +77,3 @@ After starting the development server, you can interact with the application usi
 
    - To access the questionnaire, go to `http://localhost:5173/questionnaire`.
    - Complete the questionnaire as needed.
-
-## Additional Information
-
-- If you encounter any issues or need to update the dependencies, you can run:
-
-  ```bash
-  npm update
-  ```
-
-- For development, you can edit the frontend code in the project directory and see the changes in real-time.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
