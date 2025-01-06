@@ -143,7 +143,14 @@ const Questionnaire = () => {
         },
         body: JSON.stringify({
           email,
-          ...updatedStats,
+          complianceChecklist: updatedStats.complianceChecklist,
+          penaltyKeywords: updatedStats.penaltyKeywords,
+          stepByStepGuide: updatedStats.stepByStepGuide,
+          faqs: updatedStats.faqs,
+          onTheRightSide: updatedStats.onTheRightSide,
+          doDont: updatedStats.doDont,
+          certifications: updatedStats.certifications,
+          legalDocuments: updatedStats.legalDocuments
         }),
       });
 
