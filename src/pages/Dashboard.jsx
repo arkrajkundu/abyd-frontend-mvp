@@ -25,7 +25,7 @@ const Dashboard = () => {
 
       if (token) {
         try {
-          const response = await axios.get('http://localhost:8000/auth/get-user-data', {
+          const response = await axios.get('http://http://172.203.224.99:8888/auth/get-user-data', {
             headers: {
               Authorization: `Bearer ${token}`,
             },

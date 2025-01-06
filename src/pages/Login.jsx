@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/auth/login', {
+      const response = await axios.post('http://http://172.203.224.99:8888/auth/login', {
         email,
         password,
       });

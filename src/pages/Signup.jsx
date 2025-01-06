@@ -15,7 +15,7 @@ const SignupPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/auth/signup', {
+      const response = await axios.post('http://http://172.203.224.99:8888/auth/signup', {
         username,
         email,
         password,

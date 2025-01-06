@@ -30,7 +30,7 @@ const Questionnaire = () => {
     const token = localStorage.getItem('authToken');
 
     try {
-      const response = await fetch('http://localhost:8000/auth/get-user-data', {
+      const response = await fetch('http://http://172.203.224.99:8888/auth/get-user-data', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -66,7 +66,7 @@ const Questionnaire = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:8000/get-questions/', {
+      const response = await fetch('http://http://172.203.224.99:8888/get-questions/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ const Questionnaire = () => {
     const email = userData?.email;
 
     try {
-      const response = await fetch(`http://localhost:8000/user/${email}/userStats`, {
+      const response = await fetch(`http://http://172.203.224.99:8888/user/${email}/userStats`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
