@@ -124,6 +124,8 @@ const Questionnaire = () => {
 
     // Send PUT request to update user stats
     console.log("Updated user stats are: ", updatedUserStats)
+    setUserStats(updatedUserStats);
+    console.log("User stats state: ", userStats)
     await updateUserStats(updatedUserStats);
     fetchQuestion(currentStep + 1);
   };
@@ -140,8 +142,8 @@ const Questionnaire = () => {
           'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-          ...updatedStats,
           email,
+          ...updatedStats,
         }),
       });
 
@@ -162,44 +164,9 @@ const Questionnaire = () => {
   const renderUserStats = () => {
     if (!userData) return null;
 
-    const { userStats } = userData;
-    console.log("user stats in render: ", userStats);
-
     return (
       <div className="user-stats">
-        <h3>User Stats</h3>
-        <div>
-          <h4>Compliance Checklist</h4>
-          <ul>
-            {userStats.complianceChecklist.map((item, index) => (
-              <li key={index}>Compliance Item {index + 1}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4>Penalties</h4>
-          <ul>
-            {userStats.penaltyKeywords.length > 0 ? (
-              userStats.penaltyKeywords.map((penalty, index) => (
-                <li key={index}>{penalty}</li>
-              ))
-            ) : (
-              <li>No penalties</li>
-            )}
-          </ul>
-        </div>
-        <div>
-          <h4>Certifications</h4>
-          <ul>
-            {userStats.certifications.length > 0 ? (
-              userStats.certifications.map((cert, index) => (
-                <li key={index}>{cert}</li>
-              ))
-            ) : (
-              <li>No certifications</li>
-            )}
-          </ul>
-        </div>
+        {userStats.onTheRightSide}
       </div>
     );
   };
