@@ -50,7 +50,6 @@ function App() {
         <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
         {/* <Route path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} /> */}
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
-        {/* <Route path="/ai-doc-builder" element={isAuthenticated ? <AIDocBuilder /> : <Navigate to="/login" />} /> */}
         <Route path="/ai-doc-builder" element={<AIDocBuilder />} />
         <Route path="/report" element={<ReportPage />} />
         <Route path="/signup" element={<SignupPage />} />
